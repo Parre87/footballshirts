@@ -1,0 +1,96 @@
+python.3.13.5 -m venv .venv
+
+
+python3.13 -m venv .venv
+
+Python 3.13.5
+
+django-admin startproject footballshirts .
+New-Item .gitignore -ItemType File
+
+In the gitignore file add: 
+*.sqlite3
+*.pyc
+__pycache__
+
+python manage.py runserver
+python manage.py createsuperuser
+git status
+git remote -v
+
+git add .
+git commit -m "initial commit"
+git push
+
+Installing alluth
+
+pip3 install django-allauth==0.50.0
+
+In Settings.py add:
+
+
+import os (top of the code)
+
+and then after Templates add:
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Needed for login with username in Django admin
+    'allauth.account.auth_backends.AuthenticationBackend',  # Needed for allauth, such as login by email
+)
+
+and after that, put som more apps under Installed_apps:
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+and after that write after AUTHENTICATION_BACKENDS
+
+SITE_ID = 1
+
+and after that create a path in urls.py in urlpatterns:
+
+path('accounts/', include('allauth.urls')), 
+(write also include after from django.urls import path, "include".
+
+This gives us all the URLS we need to login, log off, password resets etc. Next we need to run migration to update the database since we added some new apps by typing in the terminal: 
+python manage.py migrate
+
+after that run server by:
+
+python manage.py runserver
+
+You will get a Page not found (404), navigate to admin:
+
+http://127.0.0.1:8000/admin and log in.
+When you logged in, update your domain by clicking on "Site"
+and update the domainname to footballshirts.example.com
+and display name to: Football shirts and SAVE.
+
+After that you need to go to settings.py to
+get the confimation links. To do that write under SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Allow login with either username or email
+ACCOUNT_EMAIL_REQUIRED = True  # Require email for account creation
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Require email verification
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True  # Require users to enter their email twice during signup
+ACCOUNT_USERNAME_MIN_LENGTH = 4  # Minimum length for usernames
+LOGIN_URL = '/accounts/login/'  # Redirect to this URL after login
+LOGIN_REDIRECT_URL = '/success'
+
+Now we need to test by running python manage.py runserver
+then navigate to 
+
+
+
+
+
+
+
+
+
+
+
+                           

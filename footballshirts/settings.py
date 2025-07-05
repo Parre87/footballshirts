@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -59,13 +68,28 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request', # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Needed for login with username in Django admin
+    'allauth.account.auth_backends.AuthenticationBackend',  # Needed for allauth, such as login by email
+)
+
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development, use console backend to print emails to console
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Allow login with either username or email
+ACCOUNT_EMAIL_REQUIRED = True  # Require email for account creation
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Require email verification
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True  # Require users to enter their email twice during signup
+ACCOUNT_USERNAME_MIN_LENGTH = 4  # Minimum length for usernames
+LOGIN_URL = '/accounts/login/'  # Redirect to this URL after login
+LOGIN_REDIRECT_URL = '/'  # Redirect to this URL after successful login
 
 WSGI_APPLICATION = 'footballshirts.wsgi.application'
 
