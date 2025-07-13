@@ -81,8 +81,24 @@ LOGIN_URL = '/accounts/login/'  # Redirect to this URL after login
 LOGIN_REDIRECT_URL = '/success'
 
 Now we need to test by running python manage.py runserver
-then navigate to 
+then navigate to /accounts/login. After that we need to create a email manuel. To do that you log in to admin/ then to account then to add email-adress then select user, enter your email and click on Verified and Primary. After that log in with the superuser, you will get a 404 page not found.You go back to settings.py and take away success in LOGIN_REDIRECT_URL = '/success. 
 
+Then write in the terminal pip3 freeze > requirements.txt
+Then write mkdir templates
+Then write mkdir templates/allauth
+
+after that commit your Changes to git add .
+git commit -m "setup allauth"
+
+and then git push
+
+
+After tha we need to copy the allauth template files to the projects templates directory using this terminal command where <Location>
+"cp -r <Location>/allauth/templates/* ./templates/allauth".
+
+After that you have to create a new file and name it base.html and copy the starter template from getbootstrap.com/docs/4.6/getting-started/introduction/.
+
+In the base.html create a new meta tag " <meta http-equiv="X-UA-Compatible" content="IE=edge">"
 
 
 
