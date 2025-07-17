@@ -100,6 +100,11 @@ After that you have to create a new file and name it base.html and copy the star
 
 In the base.html create a new meta tag " <meta http-equiv="X-UA-Compatible" content="IE=edge">"
 
+To create the app itself I did the following in the terminal:
+
+python manage.py startapp home
+mkdir -p home/templates/home
+Then right click on home to create a index.html file.
 
 
 
