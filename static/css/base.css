@@ -1,80 +1,137 @@
-html {
-  height: 100%;
-}
+/* Base CSS for Football Shirts site */
 
+html { height: 100%; }
 body {
   background: url('/media/homepage_background_cropped.jpg') no-repeat center center fixed;
   background-size: cover;
-  height: calc(100vh - 164px);
   color: #555;
-  font-family: 'Lato';
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* from Bulma */
+/* Icon helper */
 .icon {
-  align-items: center;
   display: inline-flex;
+  align-items: center;
   justify-content: center;
   height: 1.5rem;
   width: 1.5rem;
 }
 
+/* Logo styling */
 .logo-font {
   text-transform: uppercase;
+  font-weight: 700;
+  margin: 0;
+}
+.main-logo-link h1,
+.main-logo-link h2 {
+  margin: 0;
+  color: #000;
 }
 
-.logo-font {
-  text-transform: uppercase;
-}
-
-.main-logo-link {
-  width: fit-content;
-}
-
-.shop-now-button {
-  background: black;
-  color: white;
-  min-width: 260px;
-}
-
+/* Buttons */
 .btn-black {
-  background: black;
-  color: white;
+  background: #000;
+  color: #fff;
+  border-radius: 0;
 }
-
-.shop-now-button:hover,
-.shop-now-button:active,
-.shop-now-button:focus,
 .btn-black:hover,
-.btn-black:active,
 .btn-black:focus {
   background: #222;
-  color: white;
+}
+.shop-now-button {
+  background: #000;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: none;
+  padding: 0.75rem 1.5rem;
+}
+.shop-now-button:hover {
+  background: #222;
 }
 
-.text-black {
-  color: #000 !important;
-}
+/* Utilities */
+.text-black { color: #000 !important; }
+.border-black { border: 1px solid #000 !important; }
+.bg-black { background: #000 !important; }
 
-.border-black {
-  border: 1px solid black !important;
-}
-
-/* ...................................Media Queries */
-
+/* Desktop header spacing */
 @media (min-width: 992px) {
-  .fixed-top-desktop-only {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1030;
+  header.fixed-top {
+    padding-top: 1rem;
   }
-
-  .header-container {
-    padding-top: 164px;
-
-    }
-
 }
+
+/* Mobile responsiveness */
+@media (max-width: 767.98px) {
+  /* Top bar items: hamburger, search, account, cart */
+  .d-md-none .list-inline {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0;
+    margin: 0;
+  }
+  .d-md-none .list-inline-item {
+    text-align: center;
+    flex: 1;
+  }
+  .d-md-none .nav-link {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 0 !important;
+    gap: 0.25rem;
+    color: #000 !important;
+  }
+  .d-md-none .navbar-toggler {
+    color: #000 !important;
+  }
+  .d-md-none .nav-link i {
+    font-size: 1.25rem;
+    display: block;
+    margin: 0;
+  }
+  /* Dropdowns centered under icon */
+  .d-md-none .dropdown-menu {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    top: 100% !important;
+    text-align: center;
+    width: 100%;
+    border-radius: 0;
+  }
+  /* Full-width search input on mobile */
+  .d-md-none .dropdown-menu .form-control {
+    width: 90%;
+    margin: 0 auto;
+  }
+  /* Stack header under logo */
+  header.fixed-top .row.align-items-center {
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Lift shopping bag icon on mobile */
+  .navbar .fa-shopping-bag {
+    position: relative;
+    top: -2rem;
+  }
+}
+
+/* Hero adjustments */
+.logo-font.display-4 {
+  font-weight: 300;
+  font-style: italic;
+  color: #333;
+  margin-top: 8rem;
+}
+
+
+
+
 
