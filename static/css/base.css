@@ -65,6 +65,16 @@ body {
   }
 }
 
+.overlay {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: white;
+  z-index: -1; /* Behind other content */
+}
+
 /* Mobile responsiveness */
 @media (max-width: 767.98px) {
   /* Top bar items: hamburger, search, account, cart */
